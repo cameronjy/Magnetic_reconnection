@@ -1,0 +1,51 @@
+=== If no file names and line numbers are shown below, one can run
+            addr2line -Cpfie my_exefile my_line_address
+    to convert `my_line_address` (e.g., 0x4a6b) into file name and line number.
+    Or one can use amrex/Tools/Backtrace/parse_bt.py.
+
+=== Please note that the line number reported by addr2line may not be accurate.
+    One can use
+            readelf -wl my_exefile | grep my_line_address'
+    to find out the offset for that line.
+
+ 0: ./main2d.gnu.TPROF.MPI.OMP.ex() [0x5ce1a9]
+    amrex::BLBackTrace::print_backtrace_info(_IO_FILE*) at /home/yangc/WarpX/WarpX/../amrex/Src/Base/AMReX_BLBackTrace.cpp:167
+
+ 1: ./main2d.gnu.TPROF.MPI.OMP.ex() [0x5d0165]
+    amrex::BLBackTrace::handler(int) at /home/yangc/WarpX/WarpX/../amrex/Src/Base/AMReX_BLBackTrace.cpp:71
+
+ 2: ./main2d.gnu.TPROF.MPI.OMP.ex() [0x502ad0]
+    amrex::Abort(char const*) at /home/yangc/WarpX/WarpX/../amrex/Src/Base/AMReX.cpp:204
+
+ 3: ./main2d.gnu.TPROF.MPI.OMP.ex() [0x4982a5]
+    PlasmaInjector::parseMomentum(amrex::ParmParse&) at /home/yangc/WarpX/WarpX/./Source/Initialization/PlasmaInjector.cpp:294
+
+ 4: ./main2d.gnu.TPROF.MPI.OMP.ex() [0x49a504]
+    PlasmaInjector::PlasmaInjector(int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) at /home/yangc/WarpX/WarpX/./Source/Initialization/PlasmaInjector.cpp:164
+
+ 5: ./main2d.gnu.TPROF.MPI.OMP.ex() [0x4e7c89]
+    void std::swap<PlasmaInjector*>(PlasmaInjector*&, PlasmaInjector*&) at /usr/include/c++/5/bits/move.h:185 (discriminator 3)
+ (inlined by) std::unique_ptr<PlasmaInjector, std::default_delete<PlasmaInjector> >::reset(PlasmaInjector*) at /usr/include/c++/5/bits/unique_ptr.h:342 (discriminator 3)
+ (inlined by) PhysicalParticleContainer::PhysicalParticleContainer(amrex::AmrCore*, int, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) at /home/yangc/WarpX/WarpX/./Source/Particles/PhysicalParticleContainer.cpp:30 (discriminator 3)
+
+ 6: ./main2d.gnu.TPROF.MPI.OMP.ex() [0x4be585]
+    MultiParticleContainer::MultiParticleContainer(amrex::AmrCore*) at /home/yangc/WarpX/WarpX/./Source/Particles/MultiParticleContainer.cpp:25
+
+ 7: ./main2d.gnu.TPROF.MPI.OMP.ex() [0x41ef12]
+    void std::swap<MultiParticleContainer*>(MultiParticleContainer*&, MultiParticleContainer*&) at /usr/include/c++/5/bits/move.h:185
+ (inlined by) std::unique_ptr<MultiParticleContainer, std::default_delete<MultiParticleContainer> >::reset(MultiParticleContainer*) at /usr/include/c++/5/bits/unique_ptr.h:342
+ (inlined by) std::unique_ptr<MultiParticleContainer, std::default_delete<MultiParticleContainer> >::operator=(std::unique_ptr<MultiParticleContainer, std::default_delete<MultiParticleContainer> >&&) at /usr/include/c++/5/bits/unique_ptr.h:251
+ (inlined by) WarpX::WarpX() at /home/yangc/WarpX/WarpX/./Source/WarpX.cpp:163
+
+ 8: ./main2d.gnu.TPROF.MPI.OMP.ex() [0x408ef5]
+    main at /home/yangc/WarpX/WarpX/./Source/main.cpp:36
+
+ 9: /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf0) [0x7fdac081d830]
+
+10: ./main2d.gnu.TPROF.MPI.OMP.ex() [0x413bf9]
+    _start at ??:?
+
+
+===== TinyProfilers ======
+main()
+
